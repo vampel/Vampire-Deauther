@@ -1,11 +1,17 @@
 #include "WiFiDeauth.h"
 #include "BTJammer.h"
+#include "uart/uart_handler.h"
+
+
+}
+
+void loop() {
+    UARTHandler::read_commands();
+}
 
 void setup() {
-  Serial.begin(115200);
-  if (!WiFiDeauth::init() || !BTJammer::init()) {
-    Serial.println("[ERROR] Inicialización fallida");
-    while(1);
+    UARTHandler::init();
+    WiFiDeauth::init();
   }
 }
 
