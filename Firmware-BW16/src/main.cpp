@@ -1,20 +1,14 @@
-#include "WiFiDeauth.h"
-#include "BTJammer.h"
-#include "uart/uart_handler.h"
-
-
-}
-
-void loop() {
-    UARTHandler::read_commands();
-}
+#include <Core.h>
 
 void setup() {
-    UARTHandler::init();
-    WiFiDeauth::init();
-  }
+    Core::begin();
+    Serial.begin(115200);
 }
 
 void loop() {
-  // Espera comandos UART desde Flipper
+    if (Serial.available()) {
+        String cmd = Serial.readStringUntil('\n');
+        if (cmd == "ATTACK") Core::wifi_attack(true);
+        else if (cmd == "BTJAM") Core::bt_jam(true);
+    }
 }
