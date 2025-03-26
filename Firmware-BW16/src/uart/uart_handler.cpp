@@ -1,5 +1,16 @@
 #include "uart_handler.h"
 #include "WiFiDeauth.h"  // Para ejecutar comandos
+#include "mac_parser.h"
+
+void UARTHandler::parse_command(const String& cmd) {
+    if (cmd.startsWith("DEAUTH24 ")) {
+        uint8_t mac[6];
+        if (MACParser::parse(cmd.substring(9), mac)) {
+            WiFiDeauth::attack(false, mac);
+            send_response("[OK] Deauth 2.4GHz iniciado");
+        } else {
+            send_response("[ERROR] MAC inválida");
+        }
 
 void UARTHandler::init(uint32_t baud_rate) {
     Serial.begin(baud_rate);
