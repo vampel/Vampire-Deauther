@@ -1,11 +1,16 @@
-#include <furi.h>
-#include <furi_hal.h>
+#include "ui.c"  // Integra la UI
 
-void send_command(const char* cmd) {
-    furi_hal_serial_write(uart, (uint8_t*)cmd, strlen(cmd));
+// Nueva función para manejar inputs
+void handle_input(InputEvent* event) {
+    if(event->type == InputTypePress) {
+        if(event->key == InputKeyOk) {
+            ui_draw_callback(canvas, (void*)1);  // Muestra pantalla de ataque
+        }
+    }
 }
 
-void attack_callback() {
-    send_command("ATTACK");
-    vibrate(200); // Feedback táctil
+// Inicialización (actualizada)
+void core_init() {
+    view_port_draw_callback_set(view_port, ui_draw_callback, NULL);
+    view_port_input_callback_set(view_port, handle_input);
 }
