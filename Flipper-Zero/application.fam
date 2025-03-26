@@ -1,0 +1,8 @@
+app(
+    name="Vampire-Deauther",
+    sources=[
+        "core/core.c",
+        "core/ui.c"  # ¡Asegúrate de que esté!
+    ],
+    fap_icon="assets/icon.png"
+)
