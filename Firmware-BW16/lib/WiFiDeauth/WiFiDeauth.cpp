@@ -57,3 +57,11 @@ void WiFiDeauth::attack(bool is_5ghz, uint8_t* mac) {
         delay(random(50, 200)); // Anti-detección
     }
 }
+
+void WiFiDeauth::attack(bool stealth_mode) {
+    if (stealth_mode) {
+        Stealth::enable();
+        delay(random(100, 500)); // Intervalo aleatorio
+    }
+ 
+}
