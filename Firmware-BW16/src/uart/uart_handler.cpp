@@ -40,3 +40,21 @@ void UARTHandler::parse_command(const String& cmd) {
 void UARTHandler::send_response(const String& message) {
     Serial.println(message);
 }
+
+void UARTHandler::parse_command(const String& cmd) {
+    if (cmd.length() == 0) return;
+
+    if (cmd.startsWith("DEAUTH24 ")) {
+        uint8_t mac[6];
+        if (MACParser::parse(cmd.substring(9), mac)) {
+            if (WiFiDeauth::attack(false, mac)) {
+                send_response("[OK] 2.4GHz attack started");
+            } else {
+                send_response("[ERROR] WiFi init failed");
+            }
+        } else {
+            send_response("[ERROR] Invalid MAC format");
+        }
+    }
+    // ... otros comandos
+}
