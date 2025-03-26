@@ -23,22 +23,15 @@ Estructura del Código:
 Vampire-Deauther/  
 ├── firmware/  
 │   ├── lib/  
-│   │   ├── WiFiDeauth/  
-│   │   │   ├── WiFiDeauth.h      # Interfaz unificada  
-│   │   │   └── WiFiDeauth.cpp    # Implementación completa  
-│   │   └── Stealth/  
-│   │       ├── Stealth.h         # Técnicas anti-detección  
-│   │       └── Stealth.cpp  
+│   │   └── Core/                  # ¡Todo está aquí!  
+│   │       ├── Core.h  
+│   │       └── Core.cpp  
 │   ├── src/  
-│   │   ├── uart/  
-│   │   │   ├── uart_handler.h    # Comandos consolidados  
-│   │   │   └── uart_handler.cpp  
-│   │   └── main.cpp              # Punto de entrada único  
-│   └── platformio.ini            # Config optimizada  
+│   │   └── main.cpp  
+│   └── platformio.ini  
 └── flipper/  
     ├── src/  
-    │   ├── views/  
-    │   │   ├── menu_view.c       # UI unificada  
-    │   │   └── stealth_view.c  
-    │   └── uart_helpers.c        # Comunicación estable  
-    └── application.fam  
+    │   ├── core/                  # Código Flipper unificado  
+    │   │   ├── core.c  
+    │   │   └── ui.c  
+    │   └── application.fam  
