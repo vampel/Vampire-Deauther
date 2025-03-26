@@ -34,7 +34,7 @@ void UARTHandler::parse_command(const String& cmd) {
             WiFiDeauth::attack(false, mac);
         }
     }
-    // ... otros comandos (DEAUTH5, BTJAM, etc.)
+    
 }
 
 void UARTHandler::send_response(const String& message) {
@@ -56,5 +56,21 @@ void UARTHandler::parse_command(const String& cmd) {
             send_response("[ERROR] Invalid MAC format");
         }
     }
-    // ... otros comandos
+    
+}
+
+bool verify_checksum(const String& cmd) {
+    uint8_t checksum = 0;
+    for (size_t i = 0; i < cmd.length() - 3; i++) { // Ej: "CMD...:XX"
+        checksum ^= cmd[i];
+    }
+    return cmd.substring(cmd.length() - 2) == String(checksum, HEX);
+}
+
+void parse_command(const String& cmd) {
+    if (!verify_checksum(cmd)) {
+        send_response("[ERROR] Checksum inválido");
+        return;
+    }
+    
 }
