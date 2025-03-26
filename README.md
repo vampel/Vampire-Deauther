@@ -21,13 +21,13 @@ Envía PRs con mejoras o reporta issues.
 Estructura del Código:
 
 Vampire-Deauther/
-├── firmware/            # Código para BW16 (PlatformIO/Arduino)
-│   ├── lib/             # Librerías custom (WiFi/BT)
-│   ├── src/             # Código principal
-│   └── platformio.ini   # Configuración BW16
-├── flipper/            # App para Flipper Zero (.fap)
-│   ├── assets/          # Iconos/gráficos
-│   ├── main.c           # Interfaz y lógica
-│   └── application.fam  # Metadata
-├── docs/               # Guías legales + tutoriales
-└── README.md           # Descripción + disclaimer ético
+├── firmware/            # Código para BW16 (PlatformIO/Arduino)  
+│   ├── lib/             # Librerías custom (WiFi/BT)  
+│   ├── src/             # Código principal  
+│   └── platformio.ini   # Configuración BW16  
+├── flipper/            # App para Flipper Zero (.fap)  
+│   ├── assets/          # Iconos/gráficos  
+│   ├── main.c           # Interfaz y lógica  
+│   └── application.fam  # Metadata  
+├── docs/               # Guías legales + tutoriales  
+└── README.md           # Descripción + disclaimer ético  
