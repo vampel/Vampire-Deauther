@@ -23,26 +23,22 @@ Estructura del Código:
 Vampire-Deauther/  
 ├── firmware/  
 │   ├── lib/  
-│   │   └── WiFiDeauth/
-│   │       ├── WiFiDeauth.h          # Interfaz Deauth  
-│   │       └── WiFiDeauth.cpp        # Implementación Low-Level  
+│   │   ├── WiFiDeauth/  
+│   │   │   ├── WiFiDeauth.h      # Interfaz unificada  
+│   │   │   └── WiFiDeauth.cpp    # Implementación completa  
+│   │   └── Stealth/  
+│   │       ├── Stealth.h         # Técnicas anti-detección  
+│   │       └── Stealth.cpp  
 │   ├── src/  
 │   │   ├── uart/  
-│   │   │   ├── uart_handler.h        # Gestión UART  
-│   │   │   ├── uart_handler.cpp      # Parser de comandos  
-│   │   │   ├── mac_parser.h          # Validación MAC  
-│   │   │   └── mac_parser.cpp        # Parseo hexadecimal  
-│   │   ├── commands.h                # Definición de comandos  
-│   │   └── main.cpp                  # Punto de entrada  
-│   └── platformio.ini                # Configuración BW16  
+│   │   │   ├── uart_handler.h    # Comandos consolidados  
+│   │   │   └── uart_handler.cpp  
+│   │   └── main.cpp              # Punto de entrada único  
+│   └── platformio.ini            # Config optimizada  
 └── flipper/  
-    ├── resources/  
-    │   └── icons/                    # Assets gráficos  
     ├── src/  
-    │   ├── uart_helpers.c            # Comunicación UART  
-    │   ├── feedback_helpers.c        # Vibración/LED  
     │   ├── views/  
-    │   │   ├── menu_view.c           # Menú principal  
-    │   │   └── attack_view.c         # Pantalla de ataque  
-    │   └── vampire_deauther.c        # App principal  
-    └── application.fam               # Metadata Flipper  
+    │   │   ├── menu_view.c       # UI unificada  
+    │   │   └── stealth_view.c  
+    │   └── uart_helpers.c        # Comunicación estable  
+    └── application.fam  
