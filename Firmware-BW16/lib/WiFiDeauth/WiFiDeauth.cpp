@@ -1,6 +1,6 @@
 #include "WiFiDeauth.h"
 #include <WiFi.h>
-#include <esp_wifi.h>
+#include <wl_definitions.h>
 
 // MAC objetivo por defecto (broadcast)
 const uint8_t broadcast_mac[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
