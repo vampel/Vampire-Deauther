@@ -117,3 +117,16 @@ int32_t vampire_deauther_app(void* p) {
     free(state);
     return 0;
 }
+
+// Añadir nuevos callbacks para BT
+static void bt_jam_start_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "BT_NOISE\n", 9);  // Envía comando
+    notification_message(app->notifications, &sequence_blink_green_100);  // Feedback visual
+}
+
+static void bt_jam_stop_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "BT_STOP\n", 8);  // Envía comando
+    notification_message(app->notifications, &sequence_blink_red_100);
+}
