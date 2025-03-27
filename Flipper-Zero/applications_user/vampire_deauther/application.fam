@@ -1,8 +1,9 @@
 App(
     appid="vampire_deauther",
     name="Vampire-Deauther",
+    apptype=FlipperAppType.EXTERNAL,
     entry_point="vampire_deauther_app",
-    flags=AppFlags.DEFAULT,
-    icon="icon.png",
     stack_size=1K,
+    icon="icon.png",
+    sdk_headers=["furi_hal_uart.h"],
 )
