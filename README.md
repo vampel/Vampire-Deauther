@@ -22,14 +22,11 @@ Estructura del Código:
 
 Vampire-Deauther/  
 ├── firmware/  
-│   ├── lib/
-│   │   └── Core/          # ✅ Contiene TODO el código consolidado  
+│   ├── lib/  
+│   │   └── Core/          # ✅ Todo el código está aquí  
 │   └── src/  
-│       ├── main.cpp       # ✅ Usa Core.h correctamente  
-│       └── platformio.ini  
+│       ├── main.cpp       # ✅    
+│       └── platformio.ini # ✅    
 └── flipper/  
-    ├── src/  
-    │   ├── core/          # ✅ Lógica + UI unificada  
-    │   └── application.fam  
-    └── assets/  
-        └── icon.png  
+    └── src/  
+        └── core/          # ✅ UI unificada aquí  
