@@ -25,3 +25,10 @@ void ui_draw_callback(Canvas* canvas, void* ctx) {
     if(ctx == 0) draw_menu(canvas);
     else draw_attack(canvas, (uint8_t)ctx);
 }
+
+
+void draw_stealth_view(Canvas* canvas) {
+    canvas_draw_str(canvas, 10, 20, "Modo Sigiloso");
+    canvas_draw_icon(canvas, 30, 30, &I_stealth_10px);
+    canvas_draw_str(canvas, 50, 40, "MAC Aleatoria");
+}
