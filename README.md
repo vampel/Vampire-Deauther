@@ -4,8 +4,7 @@ Pentesting 2.4ghz 5ghz and BT
 ⚠️ **ADVERTENCIA**: Solo para pruebas éticas en redes propias o autorizadas.  
 
 ## Características  
-- Deauth 2.4GHz (canales personalizables).
-- Deauth 5GHz  (canales personalizables).
+- Deauth 2.4GHz y 5ghz(canales personalizables).
 - Bluetooth Jammer (BLE Spam + Classic).  
 - Control via Flipper Zero (.fap).  
 
@@ -17,8 +16,21 @@ Pentesting 2.4ghz 5ghz and BT
 ## Contribuir  
 Envía PRs con mejoras o reporta issues.  
 
-
-Estructura del Código:
+Estructura del Menu en Flipper Zero:
+Apps/Vampire deauther
+├── Wifi deauther
+│   ├── WiFi All Deauth
+│   │    └── estructura como wifi marauder
+│   ├── WiFi 2.4GHz Deauth
+│   │    └── estructura como wifi marauder
+│   └── WiFi 5GHz Deauth
+│        └── estructura como wifi marauder
+└── BT Jammer
+    ├── BT Jammer All (solo iniciar y parar)
+    ├── BT Jammer Classic (solo iniciar y parar)
+    └── BT Jammer BLE (solo iniciar y parar)
+    
+##Estructura del Código:
 
 Vampire-Deauther/  
 /Flipper-Zero/  
