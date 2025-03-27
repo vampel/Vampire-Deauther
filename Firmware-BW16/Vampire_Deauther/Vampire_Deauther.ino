@@ -1,33 +1,28 @@
 #include <RTWifi.h>
 #include <RTBlue.h>
 
+// En Vampire_Deauther.ino
 void handleSerialCommands() {
     if (Serial.available()) {
         String cmd = Serial.readStringUntil('\n');
         cmd.trim();
-
+        
         // Comandos WiFi
-        if (cmd == "SCAN") {
-            scanWiFi();
-        } else if (cmd == "DEAUTH") {
-            startDeauth();
+        if (cmd == "WIFI_DEAUTH_ALL") {
+            deauthAllNetworks();
+        } else if (cmd == "WIFI_DEAUTH_24") {
+            deauth24GHz();
+        } else if (cmd == "WIFI_DEAUTH_5") {
+            deauth5GHz();
         }
-
-        // Comandos Bluetooth
-        else if (cmd == "BT_NOISE") {
-            startBTJamming();
-            Serial.println("BT_JAMMING_ON");
-        } else if (cmd == "BT_STOP") {
-            stopBTJamming();
-            Serial.println("BT_JAMMING_OFF");
+        
+        // Comandos BT Jammer
+        else if (cmd == "BT_JAM_ALL") {
+            btJamAll();
+        } else if (cmd == "BT_JAM_CLASSIC") {
+            btJamClassic();
+        } else if (cmd == "BT_JAM_BLE") {
+            btJamBLE();
         }
-    }
-}
-
-void startBTJamming() {
-    for (int channel = 0; channel < 79; channel++) {
-        rtw_bt_set_channel(channel);
-        rtw_bt_tx_noise();
-        delay(10);
     }
 }
