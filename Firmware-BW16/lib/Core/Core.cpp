@@ -26,3 +26,15 @@ void Core::randomize_mac() {
     uint8_t mac[6] = {0x02, random(256), random(256), random(256), random(256), random(256)};
     esp_wifi_set_mac(WIFI_IF_STA, mac);
 }
+
+void Core::bt_jam(bool random_mac) {
+    if (random_mac) randomize_mac();
+    BLEDevice::init("");
+    BLEServer* pServer = BLEDevice::createServer();
+    pServer->getAdvertising()->start();
+}
+
+void Core::stealth_mode(uint8_t level) {
+    randomize_mac();
+    set_tx_power(level * 10); // Nivel 1-5 (10dBm a 50dBm)
+}
