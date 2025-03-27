@@ -21,12 +21,18 @@ Envía PRs con mejoras o reporta issues.
 Estructura del Código:
 
 Vampire-Deauther/  
-├── firmware/  
-│   ├── lib/  
-│   │   └── Core/          # ✅ Todo el código está aquí  
-│   └── src/  
-│       ├── main.cpp       # ✅    
-│       └── platformio.ini # ✅    
-└── flipper/  
-    └── src/  
-        └── core/          # ✅ UI unificada aquí  
+/Flipper-Zero/  
+│  
+├── applications_user/  
+│   └── vampire_deauther/  
+│       ├── vampire_deauther.c  
+│       ├── vampire_deauther.h  
+│       ├── application.fam  
+│       └── icon.png  
+│  
+/Firmware_BW16/  
+│  
+└── Vampire_Deauther/  
+    ├── Vampire_Deauther.ino  
+    ├── RTWifi.h  
+    └── RTBlue.h  
