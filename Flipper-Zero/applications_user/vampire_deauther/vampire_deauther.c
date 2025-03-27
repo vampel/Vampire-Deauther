@@ -3,7 +3,46 @@
 #include <input/input.h>
 #include <assets_icons.h>
 #include <notification/notification.h>
+#include "vampire_deauther.h"
+#include <notification/notification_messages.h>
 
+// Callbacks para WiFi
+static void wifi_scan_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "SCAN\n", 5);
+    notification_message(app->notifications, &sequence_blink_blue_100);
+}
+
+static void deauth_start_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "DEAUTH\n", 7);
+    notification_message(app->notifications, &sequence_blink_red_100);
+}
+
+// Callbacks para Bluetooth Jamming
+static void bt_jam_start_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "BT_NOISE\n", 9);
+    notification_message(app->notifications, &sequence_blink_green_100);
+}
+
+static void bt_jam_stop_callback(void* context) {
+    VampireDeautherApp* app = context;
+    furi_hal_uart_tx(app->uart, "BT_STOP\n", 8);
+    notification_message(app->notifications, &sequence_blink_red_100);
+}
+
+// Menú principal
+static void draw_main_menu(VampireDeautherApp* app) {
+    submenu_reset(app->submenu);
+    submenu_add_item(app->submenu, "WiFi Scan", 0, wifi_scan_callback, app);
+    submenu_add_item(app->submenu, "Start Deauth", 1, deauth_start_callback, app);
+    submenu_add_item(app->submenu, "Start BT Noise", 2, bt_jam_start_callback, app);
+    submenu_add_item(app->submenu, "Stop BT Noise", 3, bt_jam_stop_callback, app);
+}
+
+// Resto de funciones (init, event handlers, etc.)
+// ... (mantén el código existente)
 typedef enum {
     ViewMainMenu,
     ViewAttack,
