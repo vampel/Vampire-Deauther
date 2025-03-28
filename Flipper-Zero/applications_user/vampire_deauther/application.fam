@@ -1,9 +1,14 @@
+# applications_user/vampire_deauther/application.fam
 App(
     appid="vampire_deauther",
     name="Vampire-Deauther",
     apptype=FlipperAppType.EXTERNAL,
     entry_point="vampire_deauther_app",
-    stack_size=1K,
+    stack_size=3K,  # Aumentado para menús complejos
     icon="icon.png",
-    sdk_headers=["furi_hal_uart.h"],
+    sdk_headers=[
+        "furi_hal_uart.h",
+        "gui/modules/submenu.h",
+        "gui/modules/variable_item_list.h"
+    ],
 )
