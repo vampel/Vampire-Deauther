@@ -25,11 +25,11 @@ Apps/Vampire deauther
 │   │    └── estructura como wifi marauder  
 │   └── WiFi 5GHz Deauth  
 │        └── estructura como wifi marauder  
-└── BT Jammer  
+├── BT Jammer  
 │   ├── BT Jammer All (solo iniciar y parar)  
 │   ├── BT Jammer Classic (solo iniciar y parar)  
 │   └── BT Jammer BLE (solo iniciar y parar)  
-
+└── Settings
     
 ##Estructura del Código:
 
