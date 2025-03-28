@@ -17,18 +17,18 @@ Pentesting 2.4ghz 5ghz and BT
 Envía PRs con mejoras o reporta issues.  
 
 Estructura del Menu en Flipper Zero:
-Apps/Vampire deauther
-├── Wifi deauther
-│   ├── WiFi All Deauth
-│   │    └── estructura como wifi marauder
-│   ├── WiFi 2.4GHz Deauth
-│   │    └── estructura como wifi marauder
-│   └── WiFi 5GHz Deauth
-│        └── estructura como wifi marauder
-└── BT Jammer
-    ├── BT Jammer All (solo iniciar y parar)
-    ├── BT Jammer Classic (solo iniciar y parar)
-    └── BT Jammer BLE (solo iniciar y parar)
+Apps/Vampire deauther  
+├── Wifi deauther  
+│   ├── WiFi All Deauth  
+│   │    └── estructura como wifi marauder  
+│   ├── WiFi 2.4GHz Deauth  
+│   │    └── estructura como wifi marauder  
+│   └── WiFi 5GHz Deauth  
+│        └── estructura como wifi marauder  
+└── BT Jammer  
+    ├── BT Jammer All (solo iniciar y parar)  
+    ├── BT Jammer Classic (solo iniciar y parar)  
+    └── BT Jammer BLE (solo iniciar y parar)  
     
 ##Estructura del Código:
 
