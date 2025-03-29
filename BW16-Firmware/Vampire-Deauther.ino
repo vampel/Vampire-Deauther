@@ -1,36 +1,36 @@
 #include <WiFi.h>
-#include "scan.h"
+#include "config.h"
+#include "wifi_scanner.h"
 #include "wifi_attack.h"
-#include "flipper_serial.h"  // Cambiado de serial.h
+#include "flipper_serial.h"
 #include "flipper.h"
 
 void setup() {
-  Serial.begin(115200);
-  delay(1000);
+  Serial.begin(SERIAL_BAUDRATE);
   
+  // Inicialización WiFi exclusiva
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
   
-  initScan();
-  initWifiAttack();
-  initFlipperSerial();  // Cambiado de initSerial()
+  init_wifi_scanner();
+  init_wifi_attack();
+  init_flipper_serial();
   
-  Serial.println(F("[VAMPIRE] Firmware iniciado (2.4GHz/5GHz)"));
+  Serial.println(F("[VAMPIRE] BW16 Firmware Ready"));
 }
 
 void loop() {
-  handleFlipperSerial();  // Cambiado de handleSerial()
+  handle_flipper_serial();
   
-  if(scanActive) {
-    channelHop();
-    performScan();
+  if(scan_active) {
+    perform_wifi_scan();
   }
   
-  if(attackActive) {
-    executeWifiAttack();
+  if(attack_active) {
+    execute_wifi_attack();
   }
   
-  updateFlipper();
+  update_flipper_interface();
   delay(10);
 }
