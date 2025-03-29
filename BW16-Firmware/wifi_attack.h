@@ -1,5 +1,5 @@
-#ifndef WIFI_ATTACKER_H
-#define WIFI_ATTACKER_H
+#ifndef WIFI_ATTACK_H
+#define WIFI_ATTACK_H
 
 #include "config.h"
 #include "wifi_scanner.h"
