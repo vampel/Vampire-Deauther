@@ -36,5 +36,7 @@ Apps/Vampire deauther
     ├── wifi_attack.h             # Ataques WiFi  
     ├── wifi_attack.cpp  
     ├── flipper_serial.h            # Comunicación con Flipper  
-    ├── flipper_serial.cpp
-    └── platformio.ini              # Configuración de compilación
+    ├── flipper_serial.cpp  
+    ├── platformio.ini              # Configuración de compilación  
+    ├── flipper.h
+    ├── flipper.cpp
