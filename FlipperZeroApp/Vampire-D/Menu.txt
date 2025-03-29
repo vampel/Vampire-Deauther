@@ -1,0 +1,24 @@
+#include <furi.h>
+#include <gui/gui.h>
+
+void draw_callback(Canvas* canvas, void* ctx) {
+    // Configuración inicial
+    canvas_set_font(canvas, FontPrimary);
+    canvas_draw_str(canvas, 10, 10, "Vampire-Deauther");
+
+    // Menú simplificado (sin arrays/loops)
+    canvas_draw_str(canvas, 10, 30, "> WiFi 2.4GHz");    // Ítem seleccionado
+    canvas_draw_str(canvas, 20, 45, "WiFi 5GHz");
+    canvas_draw_str(canvas, 20, 60, "BT Jammer");
+}
+
+int32_t vampire_deauther_app(void* p) {
+    // Configuración mínima para Lopaka
+    ViewPort* view_port = view_port_alloc();
+    view_port_draw_callback_set(view_port, draw_callback, NULL);
+    
+    Gui* gui = furi_record_open(RECORD_GUI);
+    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
+
+    return 0;
+}
