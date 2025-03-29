@@ -31,8 +31,8 @@ Apps/Vampire deauther
 └── BW16-Firmware/  
     ├── Vampire-Deauther.ino        # Archivo principal  
     ├── config.h                    # Configuraciones globales  
-    ├── wifi_scanner.h              # Escaneo WiFi  
-    ├── wifi_scanner.cpp  
+    ├── wifi_scan.h              # Escaneo WiFi  
+    ├── wifi_scan.cpp  
     ├── wifi_attack.h             # Ataques WiFi  
     ├── wifi_attack.cpp  
     ├── flipper_serial.h            # Comunicación con Flipper  
