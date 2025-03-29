@@ -1,35 +1,37 @@
 #include <WiFi.h>
-#include "config.h"
-#include "wifi_scanner.h"
-#include "wifi_attacker.h"
-#include "flipper_serial.h"
+#include "scan.h"
+#include "attack.h"
+#include "serial.h"
+#include "flipper.h"
 
 void setup() {
-  Serial.begin(SERIAL_BAUDRATE);
+  Serial.begin(115200);
+  delay(1000);
   
-  // Inicialización exclusiva WiFi
+  // Inicialización WiFi exclusiva (sin Bluetooth)
   WiFi.mode(WIFI_STA);
   WiFi.disconnect();
   delay(100);
   
-  init_wifi_scanner();
-  init_wifi_attacker();
-  init_flipper_serial();
+  initScan();
+  initAttack();
+  initSerial();
   
-  Serial.println("[+] Vampire-Deauther BW16 Ready");
-  Serial.println("[+] Bluetooth completamente deshabilitado");
+  Serial.println(F("[VAMPIRE] Firmware iniciado (2.4GHz/5GHz)"));
 }
 
 void loop() {
-  handle_flipper_commands();
+  handleSerial();
   
-  if(scan_status == SCAN_ACTIVE) {
-    perform_wifi_scan();
+  if(scanActive) {
+    channelHop();
+    performScan();
   }
   
-  if(attack_status == ATTACK_ACTIVE) {
-    execute_wifi_attack();
+  if(attackActive) {
+    executeAttack();
   }
   
+  updateFlipper();
   delay(10);
 }
