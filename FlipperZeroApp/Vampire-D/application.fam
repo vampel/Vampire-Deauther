@@ -1,0 +1,14 @@
+App(
+    appid="vampire_deauther",
+    name="Vampire-Deauther",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="vampire_deauther_app",
+    stack_size=1024,  # Reducido para Momentum
+    icon="icon.png",
+    fap_version="1.0",
+    fap_author="Vampel",
+    fap_description="Controlador BW16 para Flipper",
+    fap_category="Tools",
+    sources=["vampire_deauther.c", "bw16_protocol.c"],
+    sdk_headers=["gui", "furi_hal", "furi", "notification"]
+)
