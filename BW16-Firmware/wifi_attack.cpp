@@ -4,7 +4,7 @@
 uint8_t attack_status = ATTACK_INACTIVE;
 WiFiNetwork* current_target = nullptr;
 
-void init_wifi_attacker() {
+void init_wifi_attack() {
   // Inicialización específica para ataques
 }
 
