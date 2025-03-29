@@ -10,6 +10,7 @@ App(
     fap_description="WiFi Deauther for BW16 Controller",
     fap_category="Tools",
     fap_icon_assets="assets",
+    sources=["*.c", "*.h"],  # Añadido para mayor claridad
     sdk_headers=[
         "gui",
         "furi_hal",
@@ -33,6 +34,5 @@ App(
     cdefines=[
         "FURI_DEBUG",
         "SERIAL_BAUDRATE=115200"
-    ],
-    default_target="f7"
+    ]
 )
