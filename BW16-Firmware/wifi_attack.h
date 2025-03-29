@@ -1,16 +1,15 @@
 #ifndef WIFI_ATTACK_H
 #define WIFI_ATTACK_H
 
-#include "config.h"
-#include "wifi_scanner.h"
+#include "wifi_scan.h"
 
-extern uint8_t attack_status;
+extern bool attack_active;
 extern WiFiNetwork* current_target;
 
 void init_wifi_attack();
-void execute_wifi_attack();
-void start_deauth_attack(WiFiNetwork* target);
-void start_beacon_spam();
-void stop_all_attacks();
+void execute_attack();
+void start_deauth(WiFiNetwork* target);
+void start_beacon(uint8_t channel, bool is_5ghz);
+void stop_attack();
 
 #endif
