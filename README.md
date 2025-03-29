@@ -22,27 +22,19 @@ Apps/Vampire deauther
 ├── Wifi deauther  
 │   ├── WiFi All Deauth  
 │   │    └── estructura como wifi marauder  
-│   ├── WiFi 2.4GHz Deauth  
-│   │    └── estructura como wifi marauder  
-│   └── WiFi 5GHz Deauth  
-│        └── estructura como wifi marauder  
-├── BT Jammer  
-│   ├── BT Jammer All (solo iniciar y parar)  
-│   ├── BT Jammer Classic (solo iniciar y parar)  
-│   └── BT Jammer BLE (solo iniciar y parar)  
-└── Settings
-    
-##Estructura del Código:
+  
 
-Vampire-Deauther/
-├── flipper_app/          # App para Flipper (C/Python)  
-│   ├── assets/           # Iconos, gráficos  
-│   └── vampire_deauther.c # Lógica principal  
-├── bw16_firmware/       # Código para BW16  
-│   ├── deauth_5ghz/     # Basado en ultramarinez  
-│   ├── ble_spam/        # Adaptado de ESP32-BlueJammer  
-│   └── main.ino         # Firmware principal  
-├── docs/  
-│   ├── wiring.md        # Conexión Flipper-BW16  
-│   └── commands.md      # Protocolo UART  
-└── README.md            # Instrucciones + vídeo demo  
+    
+##Estructura del firmware:
+
+/Vampire-Deauther/  
+└── BW16-Firmware/  
+    ├── Vampire-Deauther.ino        # Archivo principal  
+    ├── config.h                    # Configuraciones globales  
+    ├── wifi_scanner.h              # Escaneo WiFi  
+    ├── wifi_scanner.cpp  
+    ├── wifi_attack.h             # Ataques WiFi  
+    ├── wifi_attack.cpp  
+    ├── flipper_serial.h            # Comunicación con Flipper  
+    ├── flipper_serial.cpp
+    └── platformio.ini              # Configuración de compilación
