@@ -1,9 +1,9 @@
 App(
-    appid="vampire_deauther",
-    name="Vampire Deauther",
+    appid="vampire_d",
+    name="Vampire-D",
     apptype=FlipperAppType.EXTERNAL,
-    entry_point="vampire_deauther_app",
-    stack_size=1K,
+    entry_point="vampire_app_app",
+    stack_size=2K,
     icon="assets/icon.png",
     fap_version="1.0",
     fap_author="Vampel",
