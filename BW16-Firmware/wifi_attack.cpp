@@ -1,40 +1,35 @@
 #include "wifi_attack.h"
 #include <WiFi.h>
 
-uint8_t attack_status = ATTACK_INACTIVE;
+bool attack_active = false;
 WiFiNetwork* current_target = nullptr;
 
 void init_wifi_attack() {
-  // Inicialización específica para ataques
+  // Inicialización específica BW16
 }
 
-void execute_wifi_attack() {
+void execute_attack() {
   if(!current_target) return;
   
-  set_wifi_channel(current_target->channel);
+  set_channel(current_target->channel);
   
-  // Ejemplo básico de comando de deautenticación
+  // Implementación de ataque basada en WiFiX
   String cmd = "iwconfig wlan0 mode monitor channel ";
   cmd += current_target->channel;
   system(cmd.c_str());
   
-  // Aquí iría la lógica real de envío de paquetes deauth
-  // usando raw sockets o librerías específicas
+  // Lógica de envío de paquetes...
 }
 
-void start_deauth_attack(WiFiNetwork* target) {
+void start_deauth(WiFiNetwork* target) {
   current_target = target;
-  attack_status = ATTACK_ACTIVE;
-  Serial.println("[+] Deauth attack started on: " + target->ssid);
+  attack_active = true;
+  Serial.print(F("[ATTACK] Deauth iniciado: "));
+  Serial.println(target->ssid);
 }
 
-void start_beacon_spam() {
-  attack_status = ATTACK_ACTIVE;
-  Serial.println("[+] Beacon spam started");
-}
-
-void stop_all_attacks() {
-  attack_status = ATTACK_INACTIVE;
+void stop_attack() {
+  attack_active = false;
   WiFi.mode(WIFI_STA);
-  Serial.println("[+] All attacks stopped");
+  Serial.println(F("[ATTACK] Detenido"));
 }
