@@ -2,6 +2,7 @@
 Pentesting 2.4ghz 5ghz and BT
 # BW16 y Flipper Zero
 ⚠️ **ADVERTENCIA**: Solo para pruebas éticas en redes propias o autorizadas.  
+⚠️ **ADVERTENCIA**: esta en modo beta, apenas funciona la aplicacion del flipper zero
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(canales personalizables).
@@ -33,19 +34,15 @@ Apps/Vampire deauther
     
 ##Estructura del Código:
 
-Vampire-Deauther/  
-/Flipper-Zero/  
-│  
-├── applications_user/  
-│   └── vampire_deauther/  
-│       ├── vampire_deauther.c  
-│       ├── vampire_deauther.h  
-│       ├── application.fam  
-│       └── icon.png  
-│  
-/Firmware_BW16/  
-│  
-└── Vampire_Deauther/  
-    ├── Vampire_Deauther.ino  
-    ├── RTWifi.h  
-    └── RTBlue.h  
+Vampire-Deauther/
+├── flipper_app/          # App para Flipper (C/Python)  
+│   ├── assets/           # Iconos, gráficos  
+│   └── vampire_deauther.c # Lógica principal  
+├── bw16_firmware/       # Código para BW16  
+│   ├── deauth_5ghz/     # Basado en ultramarinez  
+│   ├── ble_spam/        # Adaptado de ESP32-BlueJammer  
+│   └── main.ino         # Firmware principal  
+├── docs/  
+│   ├── wiring.md        # Conexión Flipper-BW16  
+│   └── commands.md      # Protocolo UART  
+└── README.md            # Instrucciones + vídeo demo  
