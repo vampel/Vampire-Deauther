@@ -1,41 +1,26 @@
 #include "flipper_serial.h"
-#include "scan.h"
+#include "wifi_scan.h"
 #include "wifi_attack.h"
 
-void initFlipperSerial() {
-  // Inicialización del puerto serial para Flipper
+void init_flipper_serial() {
+  Serial.begin(SERIAL_BAUDRATE);
 }
 
-void handleFlipperSerial() {
-  if(Serial.available()) {
-    String cmd = Serial.readStringUntil('\n');
-    cmd.trim();
-    
-    if(cmd == "scan.start") {
-      startScan();
-      sendToFlipper("scan.status=1");
-    }
-    else if(cmd == "scan.stop") {
-      stopScan();
-      sendToFlipper("scan.status=0");
-    }
-    else if(cmd == "scan.results") {
-      sendToFlipper(getScanResults());
-    }
-    else if(cmd.startsWith("attack.deauth ")) {
-      int idx = cmd.substring(13).toInt();
-      if(idx >= 0 && idx < networks.size()) {
-        startDeauth(&networks[idx]);
-        sendToFlipper("attack.status=1");
-      }
-    }
-    else if(cmd == "attack.stop") {
-      stopAttack();
-      sendToFlipper("attack.status=0");
+void handle_flipper_serial() {
+  if(!Serial.available()) return;
+  
+  String cmd = Serial.readStringUntil('\n');
+  cmd.trim();
+  
+  if(cmd == CMD_SCAN_START) {
+    start_scan();
+    send_to_flipper("scan:started");
+  }
+  else if(cmd == CMD_DEAUTH) {
+    // Ejemplo: "deauth 0" (índice de red)
+    int idx = cmd.substring(6).toInt();
+    if(idx >= 0 && idx < networks.size()) {
+      start_deauth(networks[idx].bssid, networks[idx].channel, networks[idx].is_5ghz);
     }
   }
-}
-
-void sendToFlipper(const String& message) {
-  Serial.println("FLP:" + message);  // Prefijo para identificar mensajes
 }
