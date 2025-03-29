@@ -19,9 +19,9 @@ Envía PRs con mejoras o reporta issues.
 
 Estructura del Menu en Flipper Zero:
 Apps/Vampire deauther  
-├── Wifi deauther  
-│   ├── WiFi All Deauth  
-│   │    └── estructura como wifi marauder  
+├── aplication.fam
+│   ├── wifi_deauther.h  
+│   │── wifi_deauther.c  
   
 
     
