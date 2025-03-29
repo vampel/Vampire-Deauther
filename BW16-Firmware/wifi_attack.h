@@ -7,7 +7,7 @@
 extern uint8_t attack_status;
 extern WiFiNetwork* current_target;
 
-void init_wifi_attacker();
+void init_wifi_attack();
 void execute_wifi_attack();
 void start_deauth_attack(WiFiNetwork* target);
 void start_beacon_spam();
