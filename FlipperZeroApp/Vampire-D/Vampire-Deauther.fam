@@ -1,10 +1,13 @@
 App(
     appid="vampire_deauther",
-    name="Vampire-Deauther",
+    name="Vampire Deauther",
     apptype=FlipperAppType.EXTERNAL,
     entry_point="vampire_deauther_app",
-    stack_size=2048,
-    icon="icon.png",
-    sdk_headers=["gui", "furi_hal", "furi", "notification"],
-    requires=["gui", "furi_hal", "furi", "notification"]
+    stack_size=1K,
+    icon="assets/icon.png",
+    fap_version="1.0",
+    fap_author="Vampel",
+    fap_description="WiFi Deauther for BW16",
+    fap_category="Tools",
+    fap_icon_assets="assets"
 )
