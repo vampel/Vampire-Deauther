@@ -1,8 +1,0 @@
-App(
-    appid="vampire_deauther",
-    name="Vampire-Deauther",
-    entry_point="vampire_deauther_app",
-    flags=AppFlags.DEFAULT,
-    icon="icon.png",
-    stack_size=1K,
-)
