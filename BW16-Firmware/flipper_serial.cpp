@@ -1,44 +1,41 @@
 #include "flipper_serial.h"
+#include "scan.h"
+#include "wifi_attack.h"
 
-void init_flipper_serial() {
-  // Inicialización adicional si es necesaria
+void initFlipperSerial() {
+  // Inicialización del puerto serial para Flipper
 }
 
-void handle_flipper_commands() {
+void handleFlipperSerial() {
   if(Serial.available()) {
-    String command = Serial.readStringUntil('\n');
-    command.trim();
+    String cmd = Serial.readStringUntil('\n');
+    cmd.trim();
     
-    if(command == CMD_SCAN_START) {
-      start_wifi_scan();
-      Serial.println("[+] Scan started");
-    } 
-    else if(command == CMD_SCAN_STOP) {
-      stop_wifi_scan();
-      Serial.println("[+] Scan stopped");
+    if(cmd == "scan.start") {
+      startScan();
+      sendToFlipper("scan.status=1");
     }
-    else if(command.startsWith("TARGET ")) {
-      int target_id = command.substring(7).toInt();
-      if(target_id >= 0 && target_id < wifi_networks.size()) {
-        current_target = &wifi_networks[target_id];
-        Serial.println("[+] Target set: " + current_target->ssid);
+    else if(cmd == "scan.stop") {
+      stopScan();
+      sendToFlipper("scan.status=0");
+    }
+    else if(cmd == "scan.results") {
+      sendToFlipper(getScanResults());
+    }
+    else if(cmd.startsWith("attack.deauth ")) {
+      int idx = cmd.substring(13).toInt();
+      if(idx >= 0 && idx < networks.size()) {
+        startDeauth(&networks[idx]);
+        sendToFlipper("attack.status=1");
       }
     }
-    else if(command == CMD_ATTACK_DEAUTH && current_target) {
-      start_deauth_attack(current_target);
-    }
-    else if(command == CMD_ATTACK_BEACON) {
-      start_beacon_spam();
-    }
-    else if(command == CMD_ATTACK_STOP) {
-      stop_all_attacks();
-    }
-    else if(command == "GET_SCAN") {
-      Serial.println(get_scan_results_json());
+    else if(cmd == "attack.stop") {
+      stopAttack();
+      sendToFlipper("attack.status=0");
     }
   }
 }
 
-void send_to_flipper(const String& message) {
-  Serial.println(message);
+void sendToFlipper(const String& message) {
+  Serial.println("FLP:" + message);  // Prefijo para identificar mensajes
 }
