@@ -18,12 +18,15 @@ Pentesting 2.4ghz 5ghz and BT
 Envía PRs con mejoras o reporta issues.  
 
 Estructura del Menu en Flipper Zero:
-Apps/Vampire deauther  
-├── aplication.fam  
+Vampire-Deauther/
+├── application.fam  
+├── vampire_deauther.c  
 ├── wifi_deauther.h  
 ├── wifi_deauther.c  
+├── bw16_protocol.h  
 ├── bw16_protocol.c  
-├── bw16_protocol.h   
+└── assets/  
+    └── icon.png  
     
   
 
