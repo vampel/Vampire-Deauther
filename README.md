@@ -19,14 +19,16 @@ Envía PRs con mejoras o reporta issues.
 
 Estructura del Menu en Flipper Zero:
 Vampire-Deauther/
-├── application.fam  
-├── vampire_deauther.c  
-├── wifi_deauther.h  
-├── wifi_deauther.c  
-├── bw16_protocol.h  
-├── bw16_protocol.c  
-└── assets/  
-        └── icon.png  
+├── application.fam
+├── vampire_deauther.c
+├── wifi_deauther.h
+├── wifi_deauther.c
+├── bw16_protocol.h
+├── bw16_protocol.c
+├── scan_manager.h
+├── scan_manager.c
+└── assets/
+    └── icon.png 
     
   
 
