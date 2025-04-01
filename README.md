@@ -6,10 +6,10 @@ Pentesting 2.4ghz 5ghz
 ⚠️ **ADVERTENCIA**: esta en modo beta, apenas haciendo funcionar la aplicacion del flipper zero (con firmware Momentum).  
 
 ## Proyecto basado en estos repositorios:
-https://github.com/tesa-klebeband/RTL8720dn-Deauther  
-https://github.com/dkyazzentwatwa/cypher-5G-deauther  
-https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main  
-https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marauder_app  
+https://github.com/tesa-klebeband/RTL8720dn-Deauther (para uso del firmware del BW16)  
+https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware del BW16)  
+https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el uso del firmware del BW16)  
+https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marauder_app (para asimilar opciones del menu en el flipper zero)
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  
