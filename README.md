@@ -2,7 +2,8 @@
 Pentesting 2.4ghz 5ghz
 # BW16 y Flipper Zero
 ⚠️ **ADVERTENCIA**: Solo para pruebas éticas en redes propias o autorizadas.  
-⚠️ **ADVERTENCIA**: esta en modo beta, apenas funciona la aplicacion del flipper zero
+⚠️ **ADVERTENCIA**: El proyecto es mcon fines educativo y para pentesting.  
+⚠️ **ADVERTENCIA**: esta en modo beta, apenas haciendo funcionar la aplicacion del flipper zero (con firmware Momentum).  
 
 ## Proyecto basado en estos repositorios:
 https://github.com/tesa-klebeband/RTL8720dn-Deauther  
