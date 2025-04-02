@@ -13,7 +13,7 @@ https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marau
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  
-- Bluetooth Jammer (BLE Spam + Classic). (ya que exista libreria de wifi para el SW16)  
+- Bluetooth Jammer (BLE Spam + Classic). (ya que exista libreria de bt para el SW16)  
 - Control via Flipper Zero (.fap).  (basado en el menu de wifi marauder)  
 
 ## Uso  
