@@ -1,0 +1,11 @@
+App(
+    appid="vampire_deauther",
+    name="[BW16] vampire_deauther",
+    fap_version=(7, 2),
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="vampire_deauther_app",
+    requires=["gui"],
+    stack_size=4 * 1024,
+    order=92,
+    fap_category="GPIO"
+)
