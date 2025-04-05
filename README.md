@@ -44,14 +44,8 @@ Vampire-Deauther/
 
 /Vampire-Deauther/  
 └── BW16-Firmware/  
-    ├── Vampire-Deauther.ino        # Archivo principal  
-    ├── config.h                    # Configuraciones globales  
-    ├── wifi_scan.h              # Escaneo WiFi  
-    ├── wifi_scan.cpp  
-    ├── wifi_attack.h             # Ataques WiFi  
-    ├── wifi_attack.cpp  
-    ├── flipper_serial.h            # Comunicación con Flipper  
-    ├── flipper_serial.cpp  
-    ├── platformio.ini              # Configuración de compilación  
-    ├── flipper.h
-    ├── flipper.cpp
+    ├── bw16_uart_firmware.ino        # Archivo principal  
+    ├── debug.h                   # Configuraciones globales  
+    ├── wifi_cust_tx.cpp  
+    ├── wifi_cust_tx.h  
+    
