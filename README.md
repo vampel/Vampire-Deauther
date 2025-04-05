@@ -25,13 +25,15 @@ https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marau
 Envía PRs con mejoras o reporta issues.  
 
 Estructura del Menu en Flipper Zero:  
-Vampire-Deauther/  
-├── application.fam  
-├── vampire_deauther.c   
-├── vampire_deauther.h  
-    └── view_main.c
-    ├── view_main.h
-
+applications_user/  
+└── vampire_deauther/  
+    ├── vampire_deauther.c    # Punto de entrada principal  
+    ├── vampire_deauther.h    # Definiciones principales  
+    ├── views/  
+    │   ├── view_main.c       # Lógica de la interfaz  
+    │   └── view_main.h       # Definiciones de la vista  
+    ├── bw16_commands.h       # Comandos BW16  
+    └── application.fam       # Configuración de compilación  
     
   
 
