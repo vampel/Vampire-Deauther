@@ -1,58 +1,82 @@
 #include "view_main.h"
 #include <gui/elements.h>
-#include <furi_hal_serial.h>
-#include <furi_hal.h>
+#include <notification/notification_messages.h>
 #include <string.h>
 
-#define MENU_LEN    3
-#define SERIAL_PORT ((FuriHalSerialId)1) // USART1: UART por GPIO del Flipper
+extern FuriHalSerialHandle* serial_handle;
+extern const GpioPin gpio_bw16_ctrl;
+extern const GpioPin gpio_bw16_status;
 
-const char* menu_items[MENU_LEN] = {
-    "Scan WiFi",
-    "Deauth Target",
-    "Beacon Spam",
-};
+static NotificationApp* notification = NULL;
 
-static int selected_index = 0;
+bool input_callback(InputEvent* event, void* context) {
+    VampireDeautherModel* model = context;
 
-void render_callback(Canvas* canvas, void* context) {
-    UNUSED(context);
-    canvas_clear(canvas);
-    canvas_set_font(canvas, FontPrimary);
-    for(size_t i = 0; i < MENU_LEN; ++i) {
-        bool selected = (i == selected_index);
-        elements_bubble_str(canvas, 5, 15 + i * 15, AlignLeft, menu_items[i], selected);
+    if(event->type == InputTypePress) {
+        switch(event->key) {
+        case InputKeyUp:
+            model->selected_index = model->selected_index > 0 ? model->selected_index - 1 : 2;
+            break;
+        case InputKeyDown:
+            model->selected_index = model->selected_index < 2 ? model->selected_index + 1 : 0;
+            break;
+        case InputKeyOk:
+            if(!model->scanning && !model->attacking) {
+                switch(model->selected_index) {
+                case 0: // Scan AP
+                    model->scanning = true;
+                    break;
+                case 1: // Deauth
+                    model->attacking = true;
+                    break;
+                case 2: // Stop
+                    // Enviar comando STOP
+                    break;
+                }
+            }
+            break;
+        case InputKeyBack:
+            if(model->scanning || model->attacking) {
+                model->scanning = false;
+                model->attacking = false;
+            }
+            break;
+        }
     }
+    return true;
 }
 
-void input_callback(InputEvent* event, void* context) {
-    ViewDispatcher* dispatcher = (ViewDispatcher*)context;
-    if(event->type == InputTypeShort) {
-        if(event->key == InputKeyUp && selected_index > 0) {
-            selected_index--;
-        } else if(event->key == InputKeyDown && selected_index < (MENU_LEN - 1)) {
-            selected_index++;
-        } else if(event->key == InputKeyRight) {
-            const char* command = NULL;
-            if(selected_index == 0)
-                command = "SCAN\n";
-            else if(selected_index == 1)
-                command = "DEAUTH\n";
-            else if(selected_index == 2)
-                command = "BEACON\n";
+void render_callback(Canvas* canvas, void* context) {
+    VampireDeautherModel* model = context;
+    canvas_clear(canvas);
+    canvas_set_font(canvas, FontSecondary);
 
-            if(command) {
-                furi_hal_serial_tx(SERIAL_PORT, (const uint8_t*)command, strlen(command));
+    // Marco de la interfaz
+    elements_frame(canvas, 0, 0, 128, 64);
+
+    if(model->scanning) {
+        canvas_draw_str_aligned(canvas, 64, 32, AlignCenter, AlignCenter, "Scanning...");
+    } else if(model->attacking) {
+        canvas_draw_str_aligned(canvas, 64, 32, AlignCenter, AlignCenter, "Deauth Running");
+    } else {
+        const char* menu_items[] = {"Scan APs", "Start Deauth", "Stop All"};
+        for(uint8_t i = 0; i < 3; i++) {
+            canvas_draw_str(canvas, 10, 16 + (i * 11), menu_items[i]);
+            if(model->selected_index == i) {
+                elements_frame(canvas, 8, 6 + (i * 11), 112, 12);
             }
-        } else if(event->key == InputKeyLeft) {
-            view_dispatcher_stop(dispatcher);
         }
     }
 }
 
 View* vampire_deauther_view_get(void) {
     View* view = view_alloc();
-    view_set_draw_callback(view, render_callback);
+    VampireDeautherModel* model = malloc(sizeof(VampireDeautherModel));
+    memset(model, 0, sizeof(VampireDeautherModel));
+
+    view_set_context(view, model);
     view_set_input_callback(view, input_callback);
+    view_set_draw_callback(view, render_callback);
+
     return view;
 }
