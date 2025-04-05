@@ -1,23 +1,19 @@
-#include <furi.h>
-#include <gui/gui.h>
 #include "views/view_main.h"
+#include <gui/gui.h>
+#include <gui/view_dispatcher.h>
+#include <furi.h>
 
 void vampire_deauther_app(void* p) {
     UNUSED(p);
+    ViewDispatcher* view_dispatcher = view_dispatcher_alloc();
+    View* view = vampire_deauther_view_get();
 
-    Gui* gui = furi_record_open(RECORD_GUI);
-    ViewPort* view_port = view_port_alloc();
+    view_dispatcher_add_view(view_dispatcher, 0, view);
+    view_dispatcher_attach_to_gui(
+        view_dispatcher, gui_get_instance(), ViewDispatcherTypeFullscreen);
+    view_dispatcher_run(view_dispatcher);
 
-    view_port_draw_callback_set(view_port, render_callback, NULL);
-    view_port_input_callback_set(view_port, input_callback, NULL);
-
-    gui_add_view_port(gui, view_port, GuiLayerFullscreen);
-
-    while(view_port_is_enabled(view_port)) {
-        furi_delay_ms(100);
-    }
-
-    gui_remove_view_port(gui, view_port);
-    view_port_free(view_port);
-    furi_record_close(RECORD_GUI);
+    view_dispatcher_remove_view(view_dispatcher, 0);
+    view_free(view);
+    view_dispatcher_free(view_dispatcher);
 }
