@@ -1,9 +1,10 @@
 #pragma once
 
-#include <gui/view.h>
 #include <gui/canvas.h>
-#include <gui/view_port.h>
+#include <gui/view_dispatcher.h>
+#include <gui/view.h>
 #include <input/input.h>
 
+View* vampire_deauther_view_get(void);
 void render_callback(Canvas* canvas, void* context);
-bool input_callback(InputEvent* event, void* context);
+void input_callback(InputEvent* event, void* context);
