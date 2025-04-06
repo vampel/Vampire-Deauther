@@ -12,19 +12,16 @@ https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el 
 https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marauder_app (para asimilar opciones del menu en el flipper zero)
 
 ## Características  
-- Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  se debe usar el BW16 de 22 pins (negro) el BW16e de 30 pines no funciona (azul)  
-- Bluetooth Jammer (BLE Spam + Classic). (ya que exista libreria de bt para el SW16)  
+- Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  se debe usar el BW16 de 22 pins (negro), el BW16e de 30 pines no funciona (azul)  
+- Bluetooth Jammer (BLE Spam + Classic). _NA_ (ya que exista libreria de bt para el SW16)  
 - Control via Flipper Zero (.fap).  (basado en el menu de wifi marauder)  
 
 ## Uso  
 1. Carga el firmware en el BW16.  
 2. Abre la app en el Flipper Zero.  
-3. Selecciona el modo (deauther / sniff etc.).  
+3. Selecciona el modo (deauther / sniff etc.).   
 
-## Contribuir  
-Envía PRs con mejoras o reporta issues.  
-
-Estructura del Menu en Flipper Zero:  
+##Estructura del Menu en Flipper Zero:  
 applications_user/  
 └── vampire_deauther/  
     ├── vampire_deauther.c    # Punto de entrada principal  
