@@ -19,7 +19,21 @@ https://github.com/0xchocolate/flipperzero-wifi-marauder/tree/feature_wifi_marau
 ## Uso  
 1. Carga el firmware en el BW16.  
 2. Abre la app en el Flipper Zero.  
-3. Selecciona el modo (deauther / sniff etc.).   
+3. Selecciona el modo (deauther / sniff etc.).
+
+## Conexiones
+BW16 (22 pines)                Flipper Zero GPIO Header
+================              =========================
+
+Pin 1  - 3V3   (Rojo)     --->   Pin 9   - 3.3V (salida) ✅
+Pin 2  - GND   (Negro)    --->   Pin 18  - GND ✅
+
+Pin 3  - PA26_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅
+Pin 4  - PA25_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅
+
+Pin 5  - PA12 (Azul)      --->   Pin 15  - GPIO (Flipper activa comando, salida) ✅
+Pin 6  - PA13 (Verde)     <---   Pin 16  - GPIO (Flipper lee estado, entrada) ✅
+
 
 ##Estructura del Menu en Flipper Zero:  
 applications_user/  
