@@ -1,82 +1,90 @@
+#include <gui/view.h>
+#include <gui/canvas.h>
+#include <furi_hal.h>
 #include "view_main.h"
-#include <gui/elements.h>
-#include <notification/notification_messages.h>
-#include <string.h>
 
-extern FuriHalSerialHandle* serial_handle;
-extern const GpioPin gpio_bw16_ctrl;
-extern const GpioPin gpio_bw16_status;
+#define GPIO_OUT_PIN &gpio_ext_pb3  // Flipper GPIO 15 -> BW16 PA12
 
-static NotificationApp* notification = NULL;
+static const char* menu_items[] = {
+    "Scan",
+    "Deauth",
+    "Beacon",
+};
 
-bool input_callback(InputEvent* event, void* context) {
-    VampireDeautherModel* model = context;
+static int selected_index = 0;
+static bool command_sent = false;
+
+static void draw_callback(Canvas* canvas, void* context) {
+    UNUSED(context);
+    canvas_clear(canvas);
+    canvas_set_font(canvas, FontPrimary);
+
+    int item_height = 14;
+    int menu_height = item_height * 3;
+    int y_start = (64 - menu_height) / 2;
+
+    for(size_t i = 0; i < 3; ++i) {
+        const char* text = menu_items[i];
+        int text_width = canvas_string_width(canvas, text);
+        int x = (128 - text_width) / 2;
+        int y = y_start + i * item_height;
+
+        if((int)i == selected_index && !command_sent) {
+            canvas_set_color(canvas, ColorBlack);
+            canvas_draw_box(canvas, x - 2, y - 1, text_width + 4, 12);
+            canvas_set_color(canvas, ColorWhite);
+        } else {
+            canvas_set_color(canvas, ColorBlack);
+        }
+
+        canvas_draw_str(canvas, x, y + 8, text);
+    }
+
+    if(command_sent) {
+        const char* action = NULL;
+        if(selected_index == 0) action = "Sending: Scan...";
+        else if(selected_index == 1) action = "Sending: Deauth...";
+        else if(selected_index == 2) action = "Sending: Beacon...";
+
+        canvas_set_font(canvas, FontPrimary);
+        uint16_t text_width = canvas_string_width(canvas, action);
+        uint16_t x = (128 - text_width) / 2;
+        uint16_t y = 64 - 4; // más abajo sin salirse
+
+        canvas_set_color(canvas, ColorBlack);
+        canvas_draw_box(canvas, x - 2, y - 9, text_width + 4, 12);
+        canvas_set_color(canvas, ColorWhite);
+        canvas_draw_str(canvas, x, y, action);
+    }
+}
+
+static bool input_callback(InputEvent* event, void* context) {
+    UNUSED(context);
 
     if(event->type == InputTypePress) {
-        switch(event->key) {
-        case InputKeyUp:
-            model->selected_index = model->selected_index > 0 ? model->selected_index - 1 : 2;
-            break;
-        case InputKeyDown:
-            model->selected_index = model->selected_index < 2 ? model->selected_index + 1 : 0;
-            break;
-        case InputKeyOk:
-            if(!model->scanning && !model->attacking) {
-                switch(model->selected_index) {
-                case 0: // Scan AP
-                    model->scanning = true;
-                    break;
-                case 1: // Deauth
-                    model->attacking = true;
-                    break;
-                case 2: // Stop
-                    // Enviar comando STOP
-                    break;
-                }
+        if(!command_sent) {
+            if(event->key == InputKeyUp) {
+                if(selected_index > 0) selected_index--;
+            } else if(event->key == InputKeyDown) {
+                if(selected_index < 2) selected_index++;
+            } else if(event->key == InputKeyOk) {
+                furi_hal_gpio_write(GPIO_OUT_PIN, true);
+                command_sent = true;
             }
-            break;
-        case InputKeyBack:
-            if(model->scanning || model->attacking) {
-                model->scanning = false;
-                model->attacking = false;
-            }
-            break;
+        } else if(event->key == InputKeyBack) {
+            furi_hal_gpio_write(GPIO_OUT_PIN, false);
+            command_sent = false;
+            return false;
         }
     }
     return true;
 }
 
-void render_callback(Canvas* canvas, void* context) {
-    VampireDeautherModel* model = context;
-    canvas_clear(canvas);
-    canvas_set_font(canvas, FontSecondary);
-
-    // Marco de la interfaz
-    elements_frame(canvas, 0, 0, 128, 64);
-
-    if(model->scanning) {
-        canvas_draw_str_aligned(canvas, 64, 32, AlignCenter, AlignCenter, "Scanning...");
-    } else if(model->attacking) {
-        canvas_draw_str_aligned(canvas, 64, 32, AlignCenter, AlignCenter, "Deauth Running");
-    } else {
-        const char* menu_items[] = {"Scan APs", "Start Deauth", "Stop All"};
-        for(uint8_t i = 0; i < 3; i++) {
-            canvas_draw_str(canvas, 10, 16 + (i * 11), menu_items[i]);
-            if(model->selected_index == i) {
-                elements_frame(canvas, 8, 6 + (i * 11), 112, 12);
-            }
-        }
-    }
-}
-
 View* vampire_deauther_view_get(void) {
+    furi_hal_gpio_init_simple(GPIO_OUT_PIN, GpioModeOutputPushPull);
+
     View* view = view_alloc();
-    VampireDeautherModel* model = malloc(sizeof(VampireDeautherModel));
-    memset(model, 0, sizeof(VampireDeautherModel));
-
-    view_set_context(view, model);
+    view_set_draw_callback(view, draw_callback);
     view_set_input_callback(view, input_callback);
-    view_set_draw_callback(view, render_callback);
-
     return view;
 }
