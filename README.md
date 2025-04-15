@@ -25,16 +25,16 @@ https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el 
 BW16 (22 pines)                Flipper Zero GPIO Header
 ================              =========================
 
-Pin 1  - 3V3   (Rojo)     --->   Pin 9   - 3.3V (salida) ✅
-Pin 2  - GND   (Negro)    --->   Pin 18  - GND ✅
-
-Pin 3  - PA26_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅ //no se ocupara?
-Pin 4  - PA25_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅ // no se ocupara?
-
-Pin 5  - PA12 (Azul)      --->   Pin 15  - GPIO (Flipper activa comando, salida) ✅
-Pin 6  - PA13 (Verde)     <---   Pin 16  - GPIO (Flipper lee estado, entrada) ✅
-
-
+Pin 1  - 3V3   (Rojo)     --->   Pin 9   - 3.3V (salida) ✅  
+Pin 2  - GND   (Negro)    --->   Pin 18  - GND ✅  
+  
+Pin 3  - PA26_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅ //no se ocupara?  
+Pin 4  - PA25_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅ // no se ocupara?  
+  
+Pin 5  - PA12 (Azul)      --->   Pin 15  - GPIO (Flipper activa comando, salida) ✅  
+Pin 6  - PA13 (Verde)     <---   Pin 16  - GPIO (Flipper lee estado, entrada) ✅  
+  
+  
 ##Estructura del Menu en Flipper Zero:  
 applications_user/  
 └── vampire_deauther/  
