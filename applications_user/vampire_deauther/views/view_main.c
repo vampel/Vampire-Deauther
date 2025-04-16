@@ -1,5 +1,6 @@
 #include <gui/view.h>
 #include <gui/canvas.h>
+#include <gui/view_dispatcher.h> // ✅ necesario para usar view_dispatcher_stop()
 #include <furi_hal.h>
 #include "view_main.h"
 
@@ -13,6 +14,8 @@ static const char* menu_items[] = {
 
 static int selected_index = 0;
 static bool command_sent = false;
+static View* global_view = NULL;
+static ViewDispatcher* global_dispatcher = NULL;  // ✅ nuevo para cerrar el FAP correctamente
 
 static void draw_callback(Canvas* canvas, void* context) {
     UNUSED(context);
@@ -49,7 +52,7 @@ static void draw_callback(Canvas* canvas, void* context) {
         canvas_set_font(canvas, FontPrimary);
         uint16_t text_width = canvas_string_width(canvas, action);
         uint16_t x = (128 - text_width) / 2;
-        uint16_t y = 64 - 4; // más abajo sin salirse
+        uint16_t y = 64 - 4;
 
         canvas_set_color(canvas, ColorBlack);
         canvas_draw_box(canvas, x - 2, y - 9, text_width + 4, 12);
@@ -70,21 +73,24 @@ static bool input_callback(InputEvent* event, void* context) {
             } else if(event->key == InputKeyOk) {
                 furi_hal_gpio_write(GPIO_OUT_PIN, true);
                 command_sent = true;
+            } else if(event->key == InputKeyBack) {
+                // ✅ cerrar la app como lo hace WiFi Marauder
+                view_dispatcher_stop(global_dispatcher);
             }
         } else if(event->key == InputKeyBack) {
             furi_hal_gpio_write(GPIO_OUT_PIN, false);
             command_sent = false;
-            return false;
         }
     }
     return true;
 }
 
-View* vampire_deauther_view_get(void) {
+View* vampire_deauther_view_get_ex(ViewDispatcher* dispatcher) {
     furi_hal_gpio_init_simple(GPIO_OUT_PIN, GpioModeOutputPushPull);
 
-    View* view = view_alloc();
-    view_set_draw_callback(view, draw_callback);
-    view_set_input_callback(view, input_callback);
-    return view;
+    global_dispatcher = dispatcher;  // guardar para usar en input_callback
+    global_view = view_alloc();
+    view_set_draw_callback(global_view, draw_callback);
+    view_set_input_callback(global_view, input_callback);
+    return global_view;
 }
