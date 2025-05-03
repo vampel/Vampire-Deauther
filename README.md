@@ -91,6 +91,8 @@ AT+BEACONRANDOM=Vampel = Espamea redes con ese suffix "vampel 001, Vampel 002 y 
 
 Hay mas opciones en el menu pero por ahorita son las principales.
 
+La idea es que El flipper mande esos comandos por UART(GPIO) como el wifi marauder y reciba los mensajes del BW16.
+
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  se debe usar el BW16 de 22 pins (negro), el BW16e de 30 pines no funciona (azul)  
