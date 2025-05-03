@@ -117,7 +117,9 @@ Pin 2  - GND   (Negro)    --->   Pin 18  - GND ✅
 Pin 3  - PA07_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅ //no se ocupara?  
 Pin 4  - PA08_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅ // no se ocupara?  
   
-Estamos usando UART0 (lo mismo que en USB-C
+Estamos usando UART0 (lo mismo que en USB-C)
+
+##Estructuras
   
   
 ##Estructura del Menu en Flipper Zero:  
