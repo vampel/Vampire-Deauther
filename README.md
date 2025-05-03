@@ -11,7 +11,7 @@ https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware d
 https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el uso del firmware del BW16)  
  
  ## Firmware Listo.  
- Para carcar el archivo .bin listo para cargar, lo mas dificil de los BW16 es borrar el firmware de fabrica, por mas que cargues el archivo y diga:  
+ Para cargar el archivo .bin listo para cargar, lo mas dificil de los BW16 es borrar el firmware de fabrica, por mas que cargues el archivo y diga:  
  
  ![](Tutorial_Images/SuccessMsg.jpg)
 
