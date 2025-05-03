@@ -31,6 +31,8 @@ y le das cargar cualquier firmware y veras:
 
 ![](Tutorial_Images/EraseDone.jpg)
 
+_En Arduino IDE veras solo # y ya no lo del firmware de fabrica_  
+
 lo que sigue es cargar el firmware: bajas de este repositorio el km0_km4_image2.bin y pegarlo en la ruta del Arduino Ameba:
 
 C:\Users\Name\AppData\Local\Arduino15\packages\realtek\tools\ameba_d_tools\1.1.3 y pegar el bin en esta ruta, deberias ver algo asi:
@@ -43,7 +45,7 @@ Sobre esa misma ruta en la barra escribes CMD y presionas Enter, deberia abrir e
 
 en CMD escribirias o pegarias esto:  
 
-upload_image_tool_windows.exe "C:\Users\Vampel\AppData\Local\Arduino15\packages\realtek\tools\ameba_d_tools\1.1.3" "COM11" "ameba_rtl8720dn_bw16" "Disable" "Disable" "1500000"  
+upload_image_tool_windows.exe "C:\Users\Vampel\AppData\Local\Arduino15\packages\realtek\tools\ameba_d_tools\1.1.3" "COM11" "ameba_rtl8720dn_bw16" "Disable" "Disable" "1500000" (cambiar el puerto COM)  
 
 Cambiar _Vampel_ por tu usuario (mismo nombre que etu CMD muestra)  
 
@@ -69,9 +71,24 @@ Abrir monitor y poner en:
 ![](Tutorial_Images/ArduinoIDEMonitorParametres.jpg)
 
 ## Comandos  
-(se mandan por monitor 
+_Usaremos monitor para mandar los comandos hasta que quede el FAP para poder mandar comandos con el Flipper Zero._  
 
+Presiona boton Reset con Arduino IDE abierto en monitor y veras:  
 
+![](Tutorial_Images/VampRdy.jpg)
+
+Listo para mandar comandos por Monitor!
+
+AT+SCAN = Scanea redes wifi y las guarda en memoria como index (numeradas)
+_Para usar Deauth primero ocupas escanear las redes_ 
+
+AT+DEAUTHIDX=5 (o el numero del index del Index) = hace deauth a una sola red (presionar boton reset para reiniciar el BW16)  
+
+AT+DEAUTHIDX=ALL = Deauth a todas las redes del Index (presionar boton reset para reiniciar el BW16)  
+
+AT+BEACONRANDOM=Vampel = Espamea redes con ese suffix "vampel 001, Vampel 002 y sigue" (despues del = puedes poner lo que quieras)
+
+Hay mas opciones en el menu pero por ahorita son las principales.
 
 
 ## Características  
