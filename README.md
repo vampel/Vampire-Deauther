@@ -104,8 +104,8 @@ La idea es que El flipper mande esos comandos por UART(GPIO) como el wifi maraud
 
 ## Uso  
 1. Carga el firmware en el BW16.  
-2. Abre la app en el Flipper Zero.  
-3. Selecciona el modo (deauther / sniff etc.).
+2. Abre la app en el Flipper Zero(ya que quede el FAP).  
+3. Escanear redes 1ro, despues Deauth por index.
 
 ## Conexiones
 BW16 (22 pines)                Flipper Zero GPIO Header
