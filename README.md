@@ -94,7 +94,7 @@ AT+BEACONRANDOM=Vampel = Espamea redes con ese suffix "vampel 001, Vampel 002 y 
 
 Hay mas opciones en el menu pero por ahorita son las principales.
 
-La idea es que El flipper mande esos comandos por UART(GPIO) como el wifi marauder y reciba los mensajes del BW16.
+La idea es que El flipper mande esos comandos por UART(GPIO) como el wifi marauder y reciba los mensajes del BW16 como hasta ahorita se ven por Arduino IDE Monitor.
 
 
 ## Características  
