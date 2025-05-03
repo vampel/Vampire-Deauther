@@ -15,7 +15,7 @@ https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el 
  
  ![](Tutorial_Images/SuccessMsg.jpg)
 
- Entonces veras que te sigue cargando el firmware de fabrica:  
+ Entonces veras que te sigue cargando el firmware de fabrica(Usando Arduino IDE en monitor):  
 
 ![](Tutorial_Images/ArduinoIDEMonitorOriginalFW.jpg) 
 
