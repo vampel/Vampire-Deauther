@@ -2,19 +2,22 @@
 Pentesting 2.4ghz 5ghz
 # BW16 y Flipper Zero
 ⚠️ **ADVERTENCIA**: Solo para pruebas éticas en redes propias o autorizadas.  
-⚠️ **ADVERTENCIA**: El proyecto es mcon fines educativo y para pentesting.  
+⚠️ **ADVERTENCIA**: El proyecto es con fines educativo y para pentesting.  
 ⚠️ **ADVERTENCIA**: esta en modo beta, apenas haciendo funcionar la aplicacion del flipper zero (con firmware Momentum).  
 
 ## Proyecto basado en estos repositorios:
 https://github.com/tesa-klebeband/RTL8720dn-Deauther (para uso del firmware del BW16)  
 https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware del BW16)  
 https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el uso del firmware del BW16)  
-
+ 
+ ## Firmware Listo.  
+ Esta el archivo .bin listo para cargar, lo mas dificil de los BW16 es borrar el firmware de fabrica, por mas que cargues el archivo y diga: 
+ ![](Tutorial_Images/SuccessMsg.jpg)
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  se debe usar el BW16 de 22 pins (negro), el BW16e de 30 pines no funciona (azul)  
   
-- Control via Flipper Zero (.fap).
+- Control via Flipper Zero (.fap). (en progreso)
 
 ## Uso  
 1. Carga el firmware en el BW16.  
