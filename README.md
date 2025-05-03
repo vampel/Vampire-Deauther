@@ -8,7 +8,7 @@ Pentesting 2.4ghz 5ghz
 
 ## Proyecto basado en estos repositorios:
 https://github.com/tesa-klebeband/RTL8720dn-Deauther (para uso del firmware del BW16)  
-https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware del BW16) _Nota: el Deauth es Emulado :(_  
+https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware del BW16)   
 https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el uso del firmware del BW16)  
  
  ## Firmware Listo.  
