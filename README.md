@@ -23,11 +23,11 @@ Lo que debes hacer es borrarlo para que no te salga lo de la imagen anterior, pa
 
 ![](Tutorial_Images/AmebaBoard.jpg)
 
-Despues seleccionar el puerto COMx de tu Board y borrarlo:  
+Despues seleccionar el puerto COMx de tu Board y cambias Erase All Flash Memory (4MB) a "erase only":  
 
 ![](Tutorial_Images/ArduinoIDESelectBoard.jpg)
 
-y le das cargar cualquier firmware entonces marcara:  
+y le das cargar cualquier firmware y veras:  
 
 ![](Tutorial_Images/EraseDone.jpg)
 
@@ -51,10 +51,25 @@ Al presionar enter deberias de ver esto:
 
 ![](Tutorial_Images/SuccessMsg.jpg)  
 
-Presionar el boton RESET del BW16 para que se reinicie y deberias ver el LED verde encendido, inidicado que esta listo
+Presionar el boton RESET del BW16 para que se reinicie y deberias ver el LED verde encendido, inidicado que esta listo, firmware cargado!.
 
+## Leds
+Verde encendido = BW16 listo  
+Azul parpadea = Escaneando redes wifi's  
+Rojo parpadea = Deauthing Single  
+Rojo parpadea (mas lento) = Deauth a todas las redes  
+Verde parpadea = Beacon Spam  
 
+## Usar con Arduino IDE.
 
+Seleccionas Ameba board, BW16(RTL8720DN) y el puerto COM
+
+Abrir monitor y poner en:
+
+![](Tutorial_Images/ArduinoIDEMonitorParametres.jpg)
+
+## Comandos  
+(se mandan por monitor 
 
 
 
