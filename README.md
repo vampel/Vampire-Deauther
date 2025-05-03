@@ -13,7 +13,7 @@ https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el 
 
 ## Características  
 - Deauth 2.4GHz y 5ghz(Por el BW16 que es dual band).  se debe usar el BW16 de 22 pins (negro), el BW16e de 30 pines no funciona (azul)  
-- Bluetooth Jammer (BLE Spam + Classic). _NA_ (ya que exista libreria de bt para el SW16)  
+  
 - Control via Flipper Zero (.fap).
 
 ## Uso  
@@ -28,11 +28,10 @@ BW16 (22 pines)                Flipper Zero GPIO Header
 Pin 1  - 3V3   (Rojo)     --->   Pin 9   - 3.3V (salida) ✅  
 Pin 2  - GND   (Negro)    --->   Pin 18  - GND ✅  
   
-Pin 3  - PA26_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅ //no se ocupara?  
-Pin 4  - PA25_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅ // no se ocupara?  
+Pin 3  - PA07_TXD (Amarillo) --> Pin 14  - RX (Flipper recibe datos) ✅ //no se ocupara?  
+Pin 4  - PA08_RXD (Blanco)   <-- Pin 13  - TX (Flipper transmite datos) ✅ // no se ocupara?  
   
-Pin 5  - PA12 (Azul)      --->   Pin 15  - GPIO (Flipper activa comando, salida) ✅  
-Pin 6  - PA13 (Verde)     <---   Pin 16  - GPIO (Flipper lee estado, entrada) ✅  
+Estamos usando UART0 (lo mismo que en USB-C
   
   
 ##Estructura del Menu en Flipper Zero:  
