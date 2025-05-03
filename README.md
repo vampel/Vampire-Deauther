@@ -12,7 +12,7 @@ https://github.com/dkyazzentwatwa/cypher-5G-deauther (para el uso del firmware d
 https://github.com/ultramarinez/RTL8720dn-5GHz-Wifi-Deauther/tree/main (para el uso del firmware del BW16)  
  
  ## Firmware Listo.  
- _Para entrar a modo Download debes conectar por USB, manten presionado BURN (5 segundos), sin soltar presiona reset(o reconecta usb) esperas 2 segundos y sueltas BURN, debes mirar algo asi aumentando:
+ _Para entrar a modo Download debes conectar por USB, manten presionado BURN (5 segundos), sin soltar presiona reset(o reconecta usb) esperas 2 segundos y sueltas BURN, debes mirar algo asi aumentando:_
 
  ![](Tutorial_Images/ArduinoIDEDevMode.jpg)
  
