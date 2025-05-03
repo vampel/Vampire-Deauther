@@ -81,6 +81,9 @@ Presiona boton Reset con Arduino IDE abierto en monitor y veras:
 Listo para mandar comandos por Monitor!
 
 AT+SCAN = Scanea redes wifi y las guarda en memoria como index (numeradas)
+
+![](Tutorial_Images/WifiScan.jpg)  
+
 _Para usar Deauth primero ocupas escanear las redes_ 
 
 AT+DEAUTHIDX=5 (o el numero del index del Index) = hace deauth a una sola red (presionar boton reset para reiniciar el BW16)  
